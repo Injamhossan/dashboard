@@ -49,19 +49,19 @@ const ProjectProgress = () => {
           </div>
         </div>
 
-        <div className="flex justify-center gap-6 mt-16 w-full shrink-0">
-            <div className="flex items-center gap-2">
-                <div className="w-3.5 h-3.5 rounded-full bg-[#175336]"></div>
-                <span className="text-[12px] font-semibold text-text-gray">Completed</span>
+        <div className="flex flex-wrap justify-center gap-4 md:gap-6 mt-16 w-full shrink-0">
+            <div className="flex items-center gap-1.5 md:gap-2">
+                <div className="w-3 md:w-3.5 h-3 md:h-3.5 rounded-full bg-[#175336]"></div>
+                <span className="text-[11px] md:text-[12px] font-semibold text-text-gray">Completed</span>
             </div>
-            <div className="flex items-center gap-2">
-                <div className="w-3.5 h-3.5 rounded-full bg-[#0F4C3A]"></div>
-                <span className="text-[12px] font-semibold text-text-gray">In Progress</span>
+            <div className="flex items-center gap-1.5 md:gap-2">
+                <div className="w-3 md:w-3.5 h-3 md:h-3.5 rounded-full bg-[#0F4C3A]"></div>
+                <span className="text-[11px] md:text-[12px] font-semibold text-text-gray">In Progress</span>
             </div>
-            <div className="flex items-center gap-2">
-                <div className="w-3.5 h-3.5 rounded-full relative overflow-hidden" style={{ background: 'repeating-linear-gradient(45deg, #ffffff, #ffffff 1px, #9ca3af 1px, #9ca3af 2.5px)' }}>
+            <div className="flex items-center gap-1.5 md:gap-2">
+                <div className="w-3 md:w-3.5 h-3 md:h-3.5 rounded-full relative overflow-hidden" style={{ background: 'repeating-linear-gradient(45deg, #ffffff, #ffffff 1px, #9ca3af 1px, #9ca3af 2.5px)' }}>
                 </div>
-                <span className="text-[12px] font-semibold text-text-gray">Pending</span>
+                <span className="text-[11px] md:text-[12px] font-semibold text-text-gray">Pending</span>
             </div>
         </div>
       </div>

@@ -35,17 +35,17 @@ const TeamCollaboration = () => {
       
       <div className="space-y-5 overflow-y-auto custom-scrollbar flex-1 pr-2">
         {members.map((member, index) => (
-          <div key={index} className="flex items-center justify-between group">
+          <div key={index} className="flex flex-col sm:flex-row sm:items-center justify-between group gap-2 sm:gap-0">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-gray-100 overflow-hidden ring-2 ring-white shadow-sm transform group-hover:scale-110 transition-transform shrink-0">
                 <img src={member.avatar} alt={member.name} className="w-full h-full object-cover scale-110 mt-1" />
               </div>
-              <div>
-                <p className="text-[14px] font-bold text-text-dark">{member.name}</p>
-                <p className="text-[11px] text-text-gray font-medium truncate max-w-[140px] md:max-w-none">{member.task}</p>
+              <div className="flex-1 min-w-0">
+                <p className="text-[14px] font-bold text-text-dark truncate">{member.name}</p>
+                <p className="text-[11px] text-text-gray font-medium truncate max-w-[200px] md:max-w-[140px] lg:max-w-none">{member.task}</p>
               </div>
             </div>
-            <span className={`text-[10px] whitespace-nowrap font-bold px-3 py-1 rounded-lg ${
+            <span className={`text-[10px] whitespace-nowrap font-bold px-3 py-1 rounded-lg w-fit sm:w-auto ml-13 sm:ml-0 ${
               member.status === 'Completed' ? 'bg-emerald-50 text-emerald-600' :
               member.status === 'In Progress' ? 'bg-amber-50 text-amber-600' :
               'bg-pink-50 text-pink-600'

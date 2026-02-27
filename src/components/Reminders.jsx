@@ -8,7 +8,7 @@ const Reminders = () => {
         <h3 className="font-bold text-[18px] mb-4 text-gray-900">Reminders</h3>
         <div className="space-y-4">
             <div className="p-1">
-                <p className="text-[36px] font-bold text-[#0F4C3A] leading-snug mb-1">Meeting with Arc Company</p>
+                <p className="text-[28px] md:text-[36px] font-bold text-[#0F4C3A] leading-snug mb-1">Meeting with Arc Company</p>
                 <p className="text-[12px] text-gray-500 font-medium tracking-wide">Time: 02.00 pm - 04.00 pm</p>
             </div>
         </div>

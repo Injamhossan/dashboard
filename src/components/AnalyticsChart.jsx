@@ -38,6 +38,13 @@ const renderCustomBarLabel = (props) => {
 
 const AnalyticsChart = () => {
   const [data, setData] = useState([]);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     fetch('https://task-api-eight-flax.vercel.app/api/analytics')
@@ -97,7 +104,7 @@ const AnalyticsChart = () => {
           </defs>
         </svg>
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={data} margin={{ top: 30, right: 10, left: 10, bottom: 5 }} barSize={54}>
+          <BarChart data={data} margin={{ top: 30, right: 10, left: 10, bottom: 5 }} barSize={windowWidth < 640 ? 30 : 54}>
             <Tooltip content={<CustomTooltip />} cursor={{ fill: 'transparent' }} />
             <XAxis 
                 dataKey="date" 

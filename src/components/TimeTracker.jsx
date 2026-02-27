@@ -50,7 +50,7 @@ const TimeTracker = () => {
             </div>
 
             <div className="relative z-10 text-center flex flex-col items-center mt-auto mb-auto">
-                <h2 className="text-[48px] font-bold tracking-tighter mb-6 font-outfit leading-none">{formatTime(seconds)}</h2>
+                <h2 className="text-[36px] md:text-[48px] font-bold tracking-tighter mb-4 md:mb-6 font-outfit leading-none">{formatTime(seconds)}</h2>
                 <div className="flex items-center gap-4">
                     <button 
                         onClick={toggleTimer}

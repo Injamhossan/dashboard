@@ -13,7 +13,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import promoBg from '../assets/image1.jpg';
 import { AuthContext } from '../providers/AuthProvider';
 
-const Sidebar = () => {
+const Sidebar = ({ onClose }) => {
   const { logOut } = React.useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -38,8 +38,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className=''>
-      <aside className="w-[256px] bg-[#f5f6f8] h-[calc(100vh-24px)] border border-gray-100/50 flex flex-col py-2 fixed left-3 top-3 overflow-y-auto custom-scrollbar rounded-3xl shadow-sm z-50">
+    <aside className="w-[256px] bg-[#f5f6f8] h-full border border-gray-100/50 flex flex-col py-2 overflow-y-auto custom-scrollbar rounded-3xl shadow-sm">
       {/* Logo */}
       <div className="flex items-center gap-3 px-6 mb-5 shrink-0">
         <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -58,6 +57,7 @@ const Sidebar = () => {
             <NavLink
               key={item.label}
               to={item.path}
+              onClick={onClose}
               className={({ isActive }) =>
                 `relative flex items-center justify-between px-6 py-2 transition-colors ${
                   isActive ? 'text-black' : 'text-[#9ca3af] hover:text-gray-600'
@@ -100,7 +100,10 @@ const Sidebar = () => {
             item.action ? (
               <button
                 key={item.label}
-                onClick={item.action}
+                onClick={(e) => {
+                  item.action(e);
+                  if (onClose) onClose();
+                }}
                 className="w-full relative flex items-center gap-4 px-6 py-3 transition-colors text-[#9ca3af] hover:text-[#0F4C3A] hover:bg-gray-50/50 cursor-pointer"
               >
                 <span className="text-[#a1a5ab]">
@@ -114,6 +117,7 @@ const Sidebar = () => {
             <NavLink
               key={item.label}
               to={item.path}
+              onClick={onClose}
               className={({ isActive }) =>
                 `relative flex items-center gap-4 px-6 py-3 transition-colors ${
                   isActive ? 'text-black' : 'text-[#9ca3af] hover:text-gray-600'
@@ -169,7 +173,6 @@ const Sidebar = () => {
         </div>
       </div>
     </aside>
-    </div>
   );
 };
 

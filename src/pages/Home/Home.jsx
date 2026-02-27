@@ -31,14 +31,14 @@ const Home = () => {
       {/* Header Info */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-[32px] font-bold text-text-dark font-outfit mb-1 leading-tight tracking-tight">Dashboard</h1>
-          <p className="text-[#9ca3af] font-medium text-[14px]">Plan, prioritize, and accomplish your tasks with ease.</p>
+          <h1 className="text-[28px] md:text-[32px] font-bold text-text-dark font-outfit mb-1 leading-tight tracking-tight">Dashboard</h1>
+          <p className="text-[#9ca3af] font-medium text-[13px] md:text-[14px]">Plan, prioritize, and accomplish your tasks with ease.</p>
         </div>
-        <div className="flex items-center gap-3">
-          <button className="flex items-center gap-2 bg-[#175336] text-white px-5 py-2.5 rounded-full text-[14px] font-semibold hover:bg-[#0F4C3A] transition-colors shadow-sm">
+        <div className="flex items-center gap-3 w-full md:w-auto overflow-x-auto pb-2 md:pb-0 hide-scrollbar">
+          <button className="flex-1 md:flex-none flex justify-center items-center gap-2 bg-[#175336] text-white px-5 py-2.5 rounded-full text-[13px] md:text-[14px] font-semibold hover:bg-[#0F4C3A] transition-colors shadow-sm whitespace-nowrap">
             <Plus size={18} strokeWidth={2.5} /> Add Project
           </button>
-          <button className="flex items-center gap-2 border-2 border-gray-200 text-[#4b5563] px-5 py-2.5 rounded-full text-[14px] font-semibold hover:bg-gray-50 transition-colors">
+          <button className="flex-1 md:flex-none flex justify-center items-center gap-2 border-2 border-gray-200 text-[#4b5563] px-5 py-2.5 rounded-full text-[13px] md:text-[14px] font-semibold hover:bg-gray-50 transition-colors whitespace-nowrap">
             Import Data
           </button>
         </div>
@@ -50,7 +50,7 @@ const Home = () => {
       </motion.div>
 
       {/* 4-Column Masonry-Style Grid for perfect vertical stacking */}
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 w-full items-stretch">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 w-full items-stretch">
         
         {/* Column 1 & 2: Analytics & Collaboration */}
         <div className="lg:col-span-2 flex flex-col gap-6 h-full">

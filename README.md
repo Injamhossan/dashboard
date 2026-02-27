@@ -1,16 +1,74 @@
-# React + Vite
+# React Dashboard Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, fully responsive, and feature-rich Dashboard Web Application built with React, Vite, Tailwind CSS, and Firebase Authentication.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Modern UI/UX:** Clean, beautiful interface with smooth animations and dynamic data visualization.
+- **Protected Routes:** Complete user authentication system guarding the dashboard.
+- **Firebase Authentication:** Secure Sign Up and Login pages.
+- **Mock API Login:** Simulate backend endpoint interaction with manual mock tokens.
+- **Responsive Design:** Built primarily with Tailwind CSS, adapted for various screen sizes.
+- **State Management:** Utilizes React's native context API and hooks.
 
-## React Compiler
+## 🧪 Testing Credentials
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+To test the application without creating a new account, you can use the following default/test login info (especially useful for the Bonus Task API login endpoint):
 
-## Expanding the ESLint configuration
+- **Email:** `user1@example.com`
+- **Password:** `password123`
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+*(Alternatively, you can create a completely new account by going to the Sign Up page. The newly created account will immediately allow you to access the dashboard and will display your real name!)*
+
+## 🛠️ Technology Stack
+
+- **Frontend:** React 19, Vite
+- **Styling:** Tailwind CSS, Framer Motion, DaisyUI
+- **Icons:** Lucide React, React Icons
+- **Routing:** React Router DOM (v7)
+- **Authentication:** Firebase Auth
+- **Notifications:** React Toastify, React Hot Toast
+
+## ⚙️ Installation & Setup
+
+1. **Clone the repository:**
+   ```bash
+   git clone <repository_url>
+   cd dashboard
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Configure Environment Variables:**
+   Create a `.env` file in the root directory and add your Firebase configurations:
+   ```env
+   VITE_FIREBASE_API_KEY=your_api_key_here
+   VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain_here
+   VITE_FIREBASE_PROJECT_ID=your_project_id_here
+   VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket_here
+   VITE_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id_here
+   VITE_FIREBASE_APP_ID=your_app_id_here
+   VITE_API_URL=http://localhost:5000
+   ```
+   *(Note: The project already comes with a test `.env` file that contains Firebase configs for demonstration purposes)*
+
+4. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+   Open your browser and navigate to the URL provided in the terminal (usually `http://localhost:5173`).
+
+## 📁 Project Structure
+
+- `/src/components`: Reusable UI elements (Header, Sidebar, Charts, Cards).
+- `/src/pages`: Main application views (Home/Dashboard, Login, SignUp).
+- `/src/providers`: React Context providers (AuthProvider).
+- `/src/routes`: Routing configuration and Protected/Private route wrappers.
+- `/src/firebase`: Firebase SDK initialization.
+
+## 🤝 Contribution
+
+Feel free to open issues or submit pull requests if you want to contribute to this project.
