@@ -7,6 +7,7 @@ import TeamCollaboration from '../../components/TeamCollaboration';
 import ProjectProgress from '../../components/ProjectProgress';
 import ProjectList from '../../components/ProjectList';
 import TimeTracker from '../../components/TimeTracker';
+// eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
 
 const Home = () => {

@@ -9,12 +9,22 @@ import {
   LifeBuoy, 
   LogOut
 } from 'lucide-react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import promoBg from '../assets/image1.jpg';
+import { AuthContext } from '../providers/AuthProvider';
 
 const Sidebar = () => {
+  const { logOut } = React.useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logOut().then(() => {
+      navigate('/login');
+    }).catch(console.error);
+  };
+
   const menuItems = [
-    { icon: <LayoutGrid size={22} />, label: 'Dashboard', path: '/' },
+    { icon: <LayoutGrid size={22} />, label: 'Dashboard', path: '/dashboard' },
     { icon: <CheckSquare size={22} />, label: 'Tasks', path: '/tasks', badge: '12+' },
     { icon: <Calendar size={22} />, label: 'Calendar', path: '/calendar' },
     { icon: <BarChart2 size={22} />, label: 'Analytics', path: '/analytics' },
@@ -24,7 +34,7 @@ const Sidebar = () => {
   const generalItems = [
     { icon: <Settings size={22} />, label: 'Settings', path: '/settings' },
     { icon: <LifeBuoy size={22} />, label: 'Help', path: '/help' },
-    { icon: <LogOut size={22} />, label: 'Logout', path: '/logout' },
+    { icon: <LogOut size={22} />, label: 'Logout', action: handleLogout },
   ];
 
   return (
@@ -87,6 +97,20 @@ const Sidebar = () => {
         <p className="text-[12px] font-medium text-gray-400 px-6 mb-4 font-outfit uppercase tracking-wider">General</p>
         <nav className="space-y-1">
           {generalItems.map((item) => (
+            item.action ? (
+              <button
+                key={item.label}
+                onClick={item.action}
+                className="w-full relative flex items-center gap-4 px-6 py-3 transition-colors text-[#9ca3af] hover:text-[#0F4C3A] hover:bg-gray-50/50 cursor-pointer"
+              >
+                <span className="text-[#a1a5ab]">
+                   {React.cloneElement(item.icon, { strokeWidth: 1.5 })}
+                </span>
+                <span className="text-[15px] mt-0.5 font-light">
+                  {item.label}
+                </span> 
+              </button>
+            ) : (
             <NavLink
               key={item.label}
               to={item.path}
@@ -110,6 +134,7 @@ const Sidebar = () => {
                 </>
               )}
             </NavLink>
+            )
           ))}
         </nav>
       </div>

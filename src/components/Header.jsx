@@ -1,7 +1,9 @@
-import React from 'react';
-import { Search, Bell, Mail, Command } from 'lucide-react';
+import React, { useContext } from 'react';
+import { Search, Bell, Mail, Command, User } from 'lucide-react';
+import { AuthContext } from '../providers/AuthProvider';
 
 const Header = () => {
+  const { user } = useContext(AuthContext);
   return (
     <header className="h-[90px] bg-[#f5f6f8] sticky rounded-3xl top-0 z-40 px-8 flex items-center justify-between shrink-0 shadow-sm border border-gray-100/50">
       {/* Search Bar */}
@@ -27,16 +29,24 @@ const Header = () => {
         </button>
 
         <div className="flex items-center gap-3 ml-2 cursor-pointer">
-          <div className="w-[42px] h-[42px] rounded-full bg-[#f0a6a6] overflow-hidden flex-shrink-0">
-            <img 
-              src="https://api.dicebear.com/7.x/avataaars/svg?seed=Michael" 
-              alt="User" 
-              className="w-full h-full object-cover scale-110 mt-1"
-            />
+          <div className="w-[42px] h-[42px] rounded-full bg-indigo-100 overflow-hidden flex-shrink-0 flex items-center justify-center border border-indigo-200">
+            {user?.photoURL ? (
+              <img 
+                src={user.photoURL} 
+                alt="User" 
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <User className="text-indigo-400" size={20} strokeWidth={2} />
+            )}
           </div>
           <div className="flex flex-col justify-center">
-            <span className="text-[15px] font-medium text-black tracking-tight leading-tight">Totok Michael</span>
-            <span className="text-[14px] text-gray-400 mt-0.5">tmichael20@mail.com</span>
+            <span className="text-[15px] font-medium text-black tracking-tight leading-tight">
+              {user?.displayName || 'User'}
+            </span>
+            <span className="text-[14px] text-gray-400 mt-0.5">
+              {user?.email || 'user@example.com'}
+            </span>
           </div>
         </div>
       </div>

@@ -9,13 +9,15 @@ import { createRoot } from 'react-dom/client';
 
 
 
+import AuthProvider from './providers/AuthProvider.jsx';
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-
-  <RouterProvider router={router} />
-  <ToastContainer position="top-right" autoClose={2000} />
-  <Toaster position="top-right" toastOptions={{ duration: 2500 }} />
-
+    <AuthProvider>
+      <RouterProvider router={router} />
+      <ToastContainer position="top-right" autoClose={2000} />
+      <Toaster position="top-right" toastOptions={{ duration: 2500 }} />
+    </AuthProvider>
   </StrictMode>,
 )
 
