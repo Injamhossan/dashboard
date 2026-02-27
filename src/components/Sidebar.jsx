@@ -29,7 +29,7 @@ const Sidebar = () => {
 
   return (
     <div className=''>
-      <aside className="w-64 bg-white h-screen border-r border-gray-100 flex flex-col py-2 fixed left-0 top-0 overflow-y-auto custom-scrollbar rounded-3xl m-2">
+      <aside className="w-[256px] bg-[#f5f6f8] h-[calc(100vh-24px)] border border-gray-100/50 flex flex-col py-2 fixed left-3 top-3 overflow-y-auto custom-scrollbar rounded-3xl shadow-sm z-50">
       {/* Logo */}
       <div className="flex items-center gap-3 px-6 mb-5 shrink-0">
         <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">

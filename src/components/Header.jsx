@@ -3,16 +3,16 @@ import { Search, Bell, Mail, Command } from 'lucide-react';
 
 const Header = () => {
   return (
-    <header className="h-[90px] bg-white sticky  rounded-3xl top-0 z-40 px-8 flex items-center justify-between mx-3 my-2">
+    <header className="h-[90px] bg-[#f5f6f8] sticky rounded-3xl top-0 z-40 px-8 flex items-center justify-between shrink-0 shadow-sm border border-gray-100/50">
       {/* Search Bar */}
       <div className="relative w-[420px]">
         <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={19} strokeWidth={2} />
         <input 
           type="text" 
           placeholder="Search task" 
-          className="w-full bg-[#f4f5f7] text-gray-900 placeholder-[#9ca3af] border-none rounded-full py-[14px] pl-[44px] pr-[60px] outline-none text-[15px] font-outfit"
+          className="w-full bg-white text-gray-900 placeholder-[#9ca3af] border border-gray-100 rounded-full py-[14px] pl-[44px] pr-[60px] outline-none text-[15px] font-outfit shadow-sm"
         />
-        <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1 bg-[#e5e7eb] px-2 py-1 rounded-[6px] text-[12px] font-semibold text-gray-600">
+        <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1 bg-[#f5f6f8] border border-gray-100 px-2 py-1 rounded-[6px] text-[12px] font-semibold text-gray-500">
            <Command size={12} strokeWidth={2.5} /> F
         </div>
       </div>

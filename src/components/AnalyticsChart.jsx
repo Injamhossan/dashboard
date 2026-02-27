@@ -1,5 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { BarChart, Bar, XAxis, ResponsiveContainer, Cell, LabelList } from 'recharts';
+import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer, Cell, LabelList } from 'recharts';
+
+const CustomTooltip = ({ active, payload }) => {
+  if (active && payload && payload.length) {
+    const data = payload[0].payload.itemData;
+    if (!data) return null;
+    return (
+      <div className="bg-white p-3 rounded-xl shadow-lg border border-gray-100 outline-none">
+        <p className="font-bold text-gray-800 mb-1">{data.date}</p>
+        <div className="flex flex-col gap-1">
+            <p className="text-[#175336] text-[13px]"><span className="font-semibold">Views:</span> {data.views}</p>
+            <p className="text-[#0F4C3A] text-[13px]"><span className="font-semibold">Clicks:</span> {data.clicks}</p>
+            <p className="text-[#10b981] text-[13px]"><span className="font-semibold">Conversions:</span> {data.conversions}</p>
+        </div>
+      </div>
+    );
+  }
+  return null;
+};
 
 const renderCustomBarLabel = (props) => {
   const { x, y, width, index, data } = props;
@@ -25,23 +43,37 @@ const AnalyticsChart = () => {
     fetch('https://task-api-eight-flax.vercel.app/api/analytics')
       .then(res => res.json())
       .then(json => {
-        const finalData = [
-            { name: 'S', value: 5, fill: '#e5e7eb' }, 
-            { name: 'M', value: 40, fill: '#175336' }, 
-            { name: 'T', value: 50, fill: '#6EE7B7', showTooltip: true, tooltipValue: '74%' }, 
-            { name: 'W', value: 45, fill: '#0F4C3A' }, 
-            { name: 'T', value: 40, fill: 'url(#stripePattern)' }, 
-            { name: 'F', value: 35, fill: 'url(#stripePattern)' }, 
-            { name: 'S', value: 5, fill: '#e5e7eb' }, 
-        ];
+        const finalData = [];
+        let maxViews = 0;
+        let highestIdx = -1;
         
-        // We override the base values with API proportional data using the views metric, scaled down
-        if (Array.isArray(json) && json.length >= 5) {
-            finalData[1].value = json[0].views / 40;
-            finalData[2].value = json[1].views / 30;
-            finalData[3].value = json[2].views / 40;
-            finalData[4].value = json[3].views / 40;
-            finalData[5].value = json[4].views / 50;
+        const colors = ['#e5e7eb', '#175336', '#6EE7B7', '#0F4C3A', 'url(#stripePattern)'];
+
+        if (Array.isArray(json)) {
+            json.forEach((item, index) => {
+                const dateObj = new Date(item.date);
+                const dayName = dateObj.toLocaleDateString('en-US', { weekday: 'short' }).charAt(0);
+                
+                finalData.push({
+                    name: dayName,
+                    date: item.date,
+                    value: item.views,
+                    itemData: item,
+                    fill: colors[index % colors.length]
+                });
+
+                if (item.views > maxViews) {
+                    maxViews = item.views;
+                    highestIdx = index;
+                }
+            });
+
+            // Dynamically show tooltip on the day with the highest views
+            if (highestIdx !== -1) {
+                finalData[highestIdx].showTooltip = true;
+                const topItem = finalData[highestIdx].itemData;
+                finalData[highestIdx].tooltipValue = topItem.conversions + '%';
+            }
         }
 
         setData(finalData);
@@ -58,16 +90,18 @@ const AnalyticsChart = () => {
       <div className="flex-1 w-full min-h-[220px] relative">
         <svg width="0" height="0">
           <defs>
-            <pattern id="stripePattern" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
-              <rect width="6" height="6" fill="#ffffff" />
-              <line x1="0" y1="0" x2="0" y2="6" stroke="#d1d5db" strokeWidth="1.5" />
+            <pattern id="stripePattern" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+              <rect width="8" height="8" fill="#ffffff" />
+              <line x1="0" y1="0" x2="0" y2="8" stroke="#8ca298" strokeWidth="2" opacity="0.9" />
             </pattern>
           </defs>
         </svg>
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data} margin={{ top: 30, right: 10, left: 10, bottom: 5 }} barSize={54}>
+            <Tooltip content={<CustomTooltip />} cursor={{ fill: 'transparent' }} />
             <XAxis 
-                dataKey="name" 
+                dataKey="date" 
+                tickFormatter={(value) => new Date(value).toLocaleDateString('en-US', { weekday: 'short' }).charAt(0)}
                 axisLine={false} 
                 tickLine={false} 
                 tick={{ fill: '#9ca3af', fontSize: 13, fontWeight: 500 }}
@@ -78,8 +112,8 @@ const AnalyticsChart = () => {
                 <Cell 
                    key={`cell-${index}`} 
                    fill={entry.fill} 
-                   stroke={entry.fill === 'url(#stripePattern)' ? '#d1d5db' : 'none'} 
-                   strokeWidth={1} 
+                   stroke={entry.fill === 'url(#stripePattern)' ? '#8ca298' : 'none'} 
+                   strokeWidth={entry.fill === 'url(#stripePattern)' ? 1.5 : 1} 
                 />
               ))}
               <LabelList dataKey="value" content={(props) => renderCustomBarLabel({...props, data})} />
