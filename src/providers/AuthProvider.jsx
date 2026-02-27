@@ -3,10 +3,17 @@ import {
   createUserWithEmailAndPassword, 
   signInWithEmailAndPassword, 
   signOut, 
-  onAuthStateChanged 
+  onAuthStateChanged,
+  setPersistence,
+  browserLocalPersistence,
+  browserSessionPersistence
 } from "firebase/auth";
 import { auth } from "../firebase/firebase.config";
 
+/**
+ * Provides authentication context to the application using Firebase.
+ * Includes email/password login, registration, and session persistence.
+ */
 // eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext(null);
 
@@ -14,22 +21,43 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  /**
+   * Registers a new user with the provided email and password.
+   */
   const createUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-  const loginUser = (email, password) => {
+  /**
+   * Authenticates a user with email and password.
+   * Modifies Firebase persistence based on "rememberMe" selection.
+   */
+  const loginUser = (email, password, rememberMe = true) => {
     setLoading(true);
-    return signInWithEmailAndPassword(auth, email, password);
+    const persistenceType = rememberMe ? browserLocalPersistence : browserSessionPersistence;
+    
+    return setPersistence(auth, persistenceType)
+      .then(() => {
+        return signInWithEmailAndPassword(auth, email, password);
+      })
+      .catch((error) => {
+        setLoading(false);
+        throw error;
+      });
   };
 
+  /**
+   * Signs out the currently authenticated user.
+   */
   const logOut = () => {
     setLoading(true);
     return signOut(auth);
   };
 
-  // Bonus task login logic
+  /**
+   * Simulates an API login based on custom endpoints.
+   */
   const mockApiLogin = async (email, password) => {
     try {
       const apiUrl = import.meta.env.VITE_API_URL || "";

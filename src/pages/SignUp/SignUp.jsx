@@ -26,7 +26,7 @@ const SignUp = () => {
     setLoading(true);
     createUser(email, password)
       .then((userCredential) => {
-        // Update user profile with the name
+        /** Updates the authenticated user's profile with their display name. */
         return updateProfile(userCredential.user, {
           displayName: form.get('name')
         });
@@ -34,7 +34,8 @@ const SignUp = () => {
       .then(() => {
         setLoading(false);
         toast.success("Account created successfully!");
-        navigate('/dashboard'); // Go to dashboard
+        /** Redirects the user to the main dashboard after successful registration. */
+        navigate('/dashboard');
       })
       .catch((error) => {
         setLoading(false);

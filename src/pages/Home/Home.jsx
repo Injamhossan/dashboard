@@ -28,7 +28,7 @@ const Home = () => {
       variants={containerVariants}
       className="px-8 pt-3 pb-12 flex flex-col gap-6"
     >
-      {/* Header Info */}
+      {/* Overview Header containing title and primary actions */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-[28px] md:text-[32px] font-bold text-text-dark font-outfit mb-1 leading-tight tracking-tight">Dashboard</h1>
@@ -44,15 +44,15 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Stats Cards Row */}
+      {/* Key Performance Dashboard Metrics */}
       <motion.div variants={itemVariants}>
         <DashboardStats />
       </motion.div>
 
-      {/* 4-Column Masonry-Style Grid for perfect vertical stacking */}
+      {/* Adaptive Dashboard Grid Layout */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 w-full items-stretch">
         
-        {/* Column 1 & 2: Analytics & Collaboration */}
+        {/* Primary Analytics and Team View */}
         <div className="lg:col-span-2 flex flex-col gap-6 h-full">
             <motion.div variants={itemVariants} className="h-[320px] shrink-0">
                 <AnalyticsChart />
@@ -62,7 +62,7 @@ const Home = () => {
             </motion.div>
         </div>
 
-        {/* Column 3: Reminders & Progress */}
+        {/* Task Tracking and Reminders */}
         <div className="lg:col-span-1 flex flex-col gap-6 h-full">
             <motion.div variants={itemVariants} className="shrink-0">
                 <Reminders />
@@ -72,7 +72,7 @@ const Home = () => {
             </motion.div>
         </div>
 
-        {/* Column 4: Project List & Time Tracker */}
+        {/* Project Management and Time Tracking */}
         <div className="lg:col-span-1 flex flex-col gap-6 h-full">
             <motion.div variants={itemVariants} className="flex-1">
                 <ProjectList />

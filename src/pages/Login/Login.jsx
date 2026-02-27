@@ -20,9 +20,10 @@ const Login = () => {
     const form = new FormData(e.currentTarget);
     const email = form.get('email');
     const password = form.get('password');
+    const rememberMe = form.get('remember-me') === 'on';
     
     setLoading(true);
-    loginUser(email, password)
+    loginUser(email, password, rememberMe)
       .then(() => {
         setLoading(false);
         toast.success("Successfully logged in!");
@@ -52,18 +53,25 @@ const Login = () => {
     setApiLoading(true);
     try {
       const data = await mockApiLogin(email, password);
-      // The bonus task dictates successful login response includes token
+      
+      /**
+       * On successful API login, the token is received.
+       * Local persistence is handled before navigating.
+       */
       if (data && data.token) {
-        toast.success("Bonus Task API Login Successful!");
+        toast.success("API Login Successful!");
         console.log("Token Received:", data.token);
-        // Persist local fake auth for api? For now, navigate.
         navigate(from, { replace: true });
       }
     } catch (error) {
        console.error(error);
-       // Since no backend is provided, let's gracefully catch and simulate success ONLY if they used user1@example.com
+       
+       /**
+        * Fallback for demonstration if the backend fails or is missing.
+        * Simulates a successful API response for specific dummy credentials.
+        */
        if (email === "user1@example.com" && password === "password123") {
-         toast.success("Bonus API Mock Successful! Received token.");
+         toast.success("API Mock Successful! Received token.");
          navigate(from, { replace: true });
        } else {
          toast.error("API login failed (Make sure backend is running or use user1@example.com).");
@@ -122,7 +130,7 @@ const Login = () => {
 
             <div className="flex items-center justify-between">
               <div className="flex items-center">
-                <input id="remember-me" name="remember-me" type="checkbox" className="h-4 w-4 text-[#175336] focus:ring-[#175336] border-gray-300 rounded cursor-pointer accent-[#175336]" />
+                <input id="remember-me" name="remember-me" type="checkbox" defaultChecked className="h-4 w-4 text-[#175336] focus:ring-[#175336] border-gray-300 rounded cursor-pointer accent-[#175336]" />
                 <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700 cursor-pointer">Remember me</label>
               </div>
               <div className="text-sm">
@@ -142,14 +150,14 @@ const Login = () => {
               )}
             </button>
 
-            {/* Bonus Task Button */}
+            {/* API Login Implementation */}
             <button
               type="button"
               onClick={handleApiLogin}
               disabled={apiLoading}
               className="w-full flex justify-center py-3 px-4 border-2 border-gray-200 rounded-full font-semibold text-[#4b5563] bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#175336] transition-all active:scale-[0.98] disabled:opacity-70 mt-3 text-[14px]"
             >
-              {apiLoading ? 'Testing API...' : 'Test Bonus API Login Endpoint'}
+              {apiLoading ? 'Testing API...' : 'Test API Login Endpoint'}
             </button>
           </form>
 

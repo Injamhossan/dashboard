@@ -75,7 +75,7 @@ const AnalyticsChart = () => {
                 }
             });
 
-            // Dynamically show tooltip on the day with the highest views
+            /** Automatically highlight the conversion rate for the highest performing day */
             if (highestIdx !== -1) {
                 finalData[highestIdx].showTooltip = true;
                 const topItem = finalData[highestIdx].itemData;

@@ -39,7 +39,7 @@ const Sidebar = ({ onClose }) => {
 
   return (
     <aside className="w-[256px] bg-[#f5f6f8] h-full border border-gray-100/50 flex flex-col py-2 overflow-y-auto custom-scrollbar rounded-3xl shadow-sm">
-      {/* Logo */}
+      {/* Sidebar Application Branding */}
       <div className="flex items-center gap-3 px-6 mb-5 shrink-0">
         <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M17 31C24.732 31 31 24.732 31 17C31 9.268 24.732 3 17 3C9.268 3 3 9.268 3 17C3 24.732 9.268 31 17 31Z" stroke="#15803D" strokeWidth="3" />
@@ -49,7 +49,7 @@ const Sidebar = ({ onClose }) => {
         <span className="text-[26px] font-medium font-outfit text-black tracking-tight mt-1">Donezo</span>
       </div>
 
-      {/* Menu Section */}
+      {/* Primary Navigation Links */}
       <div className="mb-8 shrink-0">
         <p className="text-[12px] font-medium text-gray-400 px-6 mb-4 font-outfit uppercase tracking-wider">Menu</p>
         <nav className="space-y-1">
@@ -66,7 +66,7 @@ const Sidebar = ({ onClose }) => {
             >
               {({ isActive }) => (
                 <>
-                  {/* Indicator Pill for Active Item */}
+                  {/* Active Route Visual Indicator */}
                   {isActive && (
                     <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[6px] h-8 bg-[#15803D] rounded-r-[6px]" />
                   )}
@@ -92,7 +92,7 @@ const Sidebar = ({ onClose }) => {
         </nav>
       </div>
 
-      {/* General Section */}
+      {/* Secondary Application Settings */}
       <div className="mb-2 shrink-0">
         <p className="text-[12px] font-medium text-gray-400 px-6 mb-4 font-outfit uppercase tracking-wider">General</p>
         <nav className="space-y-1">
@@ -143,7 +143,7 @@ const Sidebar = ({ onClose }) => {
         </nav>
       </div>
 
-      {/* Promo Card */}
+      {/* Mobile Application Promo Modal */}
       <div className="mt-auto px-6 shrink-0 pt-2">
         <div 
             className="w-full rounded-[24px] overflow-hidden relative flex flex-col justify-end p-5 pt-8 shadow-sm"
@@ -154,7 +154,7 @@ const Sidebar = ({ onClose }) => {
                 minHeight: '220px'
             }}
         >
-          {/* Logo badge */}
+          {/* Embedded Promo Logo Vector */}
           <div className="absolute top-5 left-5 w-8 h-8 bg-white rounded-full flex items-center justify-center">
             <svg width="18" height="18" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M17 31C24.732 31 31 24.732 31 17C31 9.268 24.732 3 17 3C9.268 3 3 9.268 3 17C3 24.732 9.268 31 17 31Z" stroke="#15803D" strokeWidth="4" />
