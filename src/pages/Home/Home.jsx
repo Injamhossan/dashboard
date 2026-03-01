@@ -35,7 +35,7 @@ const Home = () => {
           <p className="text-[#9ca3af] font-medium text-[13px] md:text-[14px]">Plan, prioritize, and accomplish your tasks with ease.</p>
         </div>
         <div className="flex items-center gap-3 w-full md:w-auto overflow-x-auto pb-2 md:pb-0 hide-scrollbar">
-          <button className="flex-1 md:flex-none flex justify-center items-center gap-2 bg-[#175336] text-white px-5 py-2.5 rounded-full text-[13px] md:text-[14px] font-semibold hover:bg-[#0F4C3A] transition-colors shadow-sm whitespace-nowrap">
+          <button className="flex-1 md:flex-none flex justify-center items-center gap-2 bg-[#175336] text-white px-5 py-2.5 rounded-full text-[13px] md:text-[14px] font-semibold hover:bg-primary-dark transition-colors shadow-sm whitespace-nowrap">
             <Plus size={18} strokeWidth={2.5} /> Add Project
           </button>
           <button className="flex-1 md:flex-none flex justify-center items-center gap-2 border-2 border-gray-200 text-[#4b5563] px-5 py-2.5 rounded-full text-[13px] md:text-[14px] font-semibold hover:bg-gray-50 transition-colors whitespace-nowrap">
@@ -54,7 +54,7 @@ const Home = () => {
         
         {/* Primary Analytics and Team View */}
         <div className="lg:col-span-2 flex flex-col gap-6 h-full">
-            <motion.div variants={itemVariants} className="h-[320px] shrink-0">
+            <motion.div variants={itemVariants} className="h-80 shrink-0">
                 <AnalyticsChart />
             </motion.div>
             <motion.div variants={itemVariants} className="flex-1">

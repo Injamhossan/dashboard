@@ -106,7 +106,7 @@ const Login = () => {
                   name="email"
                   type="email"
                   required
-                  className="block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#175336] focus:border-[#175336] bg-gray-50 transition-all outline-none text-[14px] text-[#111827]"
+                  className="block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#175336] focus:border-[#175336] bg-gray-50 transition-all outline-none text-[14px] text-text-dark"
                   placeholder="you@example.com"
                 />
               </div>
@@ -122,7 +122,7 @@ const Login = () => {
                   name="password"
                   type="password"
                   required
-                  className="block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#175336] focus:border-[#175336] bg-gray-50 transition-all outline-none text-[14px] text-[#111827]"
+                  className="block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#175336] focus:border-[#175336] bg-gray-50 transition-all outline-none text-[14px] text-text-dark"
                   placeholder="••••••••"
                 />
               </div>
@@ -134,14 +134,14 @@ const Login = () => {
                 <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700 cursor-pointer">Remember me</label>
               </div>
               <div className="text-sm">
-                <a href="#" className="font-medium text-[#175336] hover:text-[#0F4C3A] transition-colors">Forgot password?</a>
+                <a href="#" className="font-medium text-[#175336] hover:text-primary-dark transition-colors">Forgot password?</a>
               </div>
             </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="w-full flex justify-center py-3 px-4 rounded-full shadow-sm text-[14px] font-semibold text-white bg-[#175336] hover:bg-[#0F4C3A] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#175336] transition-all active:scale-[0.98] disabled:opacity-70"
+              className="w-full flex justify-center py-3 px-4 rounded-full shadow-sm text-[14px] font-semibold text-white bg-[#175336] hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#175336] transition-all active:scale-[0.98] disabled:opacity-70"
             >
               {loading ? (
                 <span className="animate-pulse">Signing in...</span>
@@ -163,7 +163,7 @@ const Login = () => {
 
           <p className="mt-8 text-center text-sm text-gray-600">
             Don't have an account?{' '}
-            <Link to="/signup" className="font-semibold text-[#175336] hover:text-[#0F4C3A] transition-colors">
+            <Link to="/signup" className="font-semibold text-[#175336] hover:text-primary-dark transition-colors">
               Create an account
             </Link>
           </p>

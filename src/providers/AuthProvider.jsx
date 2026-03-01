@@ -24,35 +24,46 @@ const AuthProvider = ({ children }) => {
   /**
    * Registers a new user with the provided email and password.
    */
-  const createUser = (email, password) => {
+  const createUser = async (email, password) => {
     setLoading(true);
-    return createUserWithEmailAndPassword(auth, email, password);
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      setUser(userCredential.user);
+      return userCredential;
+    } finally {
+      setLoading(false);
+    }
   };
 
   /**
    * Authenticates a user with email and password.
    * Modifies Firebase persistence based on "rememberMe" selection.
    */
-  const loginUser = (email, password, rememberMe = true) => {
+  const loginUser = async (email, password, rememberMe = true) => {
     setLoading(true);
     const persistenceType = rememberMe ? browserLocalPersistence : browserSessionPersistence;
-    
-    return setPersistence(auth, persistenceType)
-      .then(() => {
-        return signInWithEmailAndPassword(auth, email, password);
-      })
-      .catch((error) => {
-        setLoading(false);
-        throw error;
-      });
+
+    try {
+      await setPersistence(auth, persistenceType);
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      setUser(userCredential.user);
+      return userCredential;
+    } finally {
+      setLoading(false);
+    }
   };
 
   /**
    * Signs out the currently authenticated user.
    */
-  const logOut = () => {
+  const logOut = async () => {
     setLoading(true);
-    return signOut(auth);
+    try {
+      await signOut(auth);
+      setUser(null);
+    } finally {
+      setLoading(false);
+    }
   };
 
   /**
