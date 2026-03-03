@@ -3,7 +3,7 @@ import { ArrowUpRight } from 'lucide-react';
 
 const StatCard = ({ title, value, subtext, number, isPrimary }) => (
   <div 
-    className={`p-6 rounded-[24px] transition-all duration-300 hover:shadow-xl flex flex-col justify-between ${
+    className={`p-6 rounded-3xl transition-all duration-300 hover:shadow-xl flex flex-col justify-between ${
       isPrimary ? 'text-white border-0' : 'bg-white text-text-dark border-[1.5px] border-gray-100'
     }`}
     style={isPrimary ? { background: 'linear-gradient(135deg, #175336 40%, #9fd663 150%)' } : {}}
@@ -20,7 +20,7 @@ const StatCard = ({ title, value, subtext, number, isPrimary }) => (
         <div className="flex items-center gap-2">
             {number && (
                 <div className={`flex items-center justify-center gap-1 px-1.5 py-0.5 rounded-[5px] border-[1.5px] text-[10px] font-bold ${
-                    isPrimary ? 'border-[#9fd663]/60 text-[#9fd663]' : 'border-[#175336]/30 text-[#175336] bg-[#175336]/[0.02]'
+                    isPrimary ? 'border-[#9fd663]/60 text-[#9fd663]' : 'border-[#175336]/30 text-[#175336] bg-[#175336]/2'
                 }`}>
                     <span>{number}</span>
                     <svg width="6" height="5" viewBox="0 0 6 5" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

@@ -25,7 +25,7 @@ const TeamCollaboration = () => {
   }, []);
 
   return (
-    <div className="bg-white p-6 rounded-[24px] border border-gray-100 flex flex-col min-h-0 h-full w-full">
+    <div className="bg-white p-6 rounded-3xl border border-gray-100 flex flex-col min-h-0 h-full w-full">
       <div className="flex justify-between items-center mb-6 shrink-0">
         <h3 className="font-bold text-[18px] text-gray-900">Team Collaboration</h3>
         <button className="flex items-center gap-1.5 px-4 py-2 border border-primary-dark/20 rounded-full text-xs font-bold text-primary-dark hover:bg-primary-dark hover:text-white transition-all">

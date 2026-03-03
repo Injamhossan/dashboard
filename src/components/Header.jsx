@@ -25,14 +25,14 @@ const Header = ({ setSidebarOpen }) => {
           placeholder="Search task" 
           className="w-full bg-white text-gray-900 placeholder-[#9ca3af] border border-gray-100 rounded-full py-[14px] pl-[44px] pr-[60px] outline-none text-[15px] font-outfit shadow-sm"
         />
-        <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1 bg-[#f5f6f8] border border-gray-100 px-2 py-1 rounded-[6px] text-[12px] font-semibold text-gray-500">
+        <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1 bg-[#f5f6f8] border border-gray-100 px-2 py-1 rounded-md text-[12px] font-semibold text-gray-500">
            <Command size={12} strokeWidth={2.5} /> F
         </div>
       </div>
 
       {/* Right Actions */}
-      <div className="flex items-center gap-2 md:gap-[14px] ml-auto">
-        <button className="w-9 h-9 md:w-[42px] md:h-[42px] rounded-full bg-white border border-gray-100 flex items-center justify-center text-[#4b5563] hover:bg-gray-50 transition-colors shadow-sm hidden sm:flex">
+      <div className="flex items-center gap-2 md:gap-3.5 ml-auto">
+        <button className="w-9 h-9 md:w-[42px] md:h-[42px] rounded-full bg-white border border-gray-100 flex items-center justify-center text-[#4b5563] hover:bg-gray-50 transition-colors shadow-sm sm:flex">
             <Mail size={19} strokeWidth={1.5} />
         </button>
         <button className="w-9 h-9 md:w-[42px] md:h-[42px] rounded-full bg-white border border-gray-100 flex items-center justify-center text-[#4b5563] hover:bg-gray-50 transition-colors shadow-sm">

@@ -68,7 +68,7 @@ const Sidebar = ({ onClose }) => {
                 <>
                   {/* Active Route Visual Indicator */}
                   {isActive && (
-                    <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[6px] h-8 bg-[#15803D] rounded-r-[6px]" />
+                    <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-8 bg-[#15803D] rounded-r-md" />
                   )}
                   
                   <div className="flex items-center gap-4">
@@ -127,7 +127,7 @@ const Sidebar = ({ onClose }) => {
               {({ isActive }) => (
                 <>
                   {isActive && (
-                    <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[6px] h-8 bg-[#15803D] rounded-r-[6px]" />
+                    <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-8 bg-[#15803D] rounded-r-md" />
                   )}
                   <span className={isActive ? 'text-[#15803D]' : 'text-[#a1a5ab]'}>
                      {React.cloneElement(item.icon, { strokeWidth: isActive ? 2 : 1.5 })}
@@ -146,7 +146,7 @@ const Sidebar = ({ onClose }) => {
       {/* Mobile Application Promo Modal */}
       <div className="mt-auto px-6 shrink-0 pt-2">
         <div 
-            className="w-full rounded-[24px] overflow-hidden relative flex flex-col justify-end p-5 pt-8 shadow-sm"
+            className="w-full rounded-3xl overflow-hidden relative flex flex-col justify-end p-5 pt-8 shadow-sm"
             style={{
                 backgroundImage: `url(${promoBg})`,
                 backgroundSize: 'cover',
@@ -166,7 +166,7 @@ const Sidebar = ({ onClose }) => {
           <div className="relative z-10 text-white mt-4">
             <h4 className="text-[17px] font-medium leading-tight mb-1">Download our<br/>Mobile App</h4>
             <p className="text-[11px] text-gray-300 font-light mb-4">Get easy in another way</p>
-            <button className="w-full bg-[#15803D] hover:bg-[#0F4C3A] text-white py-2.5 rounded-full text-[13px] font-semibold transition-colors">
+            <button className="w-full bg-primary hover:bg-primary-dark text-white py-2.5 rounded-full text-[13px] font-semibold transition-colors">
               Download
             </button>
           </div>
